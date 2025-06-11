@@ -30,11 +30,14 @@ router.get(
       });
       if (collection.length === 0) {
         return res.status(404).json({
-          error:
-            "No Pokémon found in your collection.",
-        });
+          message: "Your collection is empty.",
+          collection: [],
+      });
       }
-      res.json(collection);
+      res.json({
+        message: "Collection fetched successfully.",
+        collection,
+      });
     } catch (error) {
       res.status(500).json({
         error: "Failed to fetch collection",
@@ -87,11 +90,14 @@ router.get(
       });
       if (wishlist.length === 0) {
         return res.status(404).json({
-          error:
-            "No Pokémon found in your wishlist.",
+          message: "Your wishlist is empty.",
+          wishlist: [],
         });
       }
-      res.json(wishlist);
+      res.json({
+        message: "Wishlist fetched successfully.",
+        wishlist,
+      });
     } catch (error) {
       res.status(500).json({
         error: "Failed to fetch wishlist",
