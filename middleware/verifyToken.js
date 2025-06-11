@@ -12,6 +12,7 @@ export default function verifyToken(req, res, next) {
     req.userId = decoded.id;
     next();
   } catch (err) {
+    console.error("Token Verification Error:", err.message); 
     return res.status(403).json({ error: "Invalid or expired token" });
   }
 }
